@@ -11,8 +11,8 @@ from classes.types.OpseStr import OpseStr
 from tools.Tool import Tool
 from .holehe.core import *
 
-from utils.DataTypeInput import DataTypeInput
-from utils.DataTypeOutput import DataTypeOutput
+from utils.datatypes import DataTypeInput
+from utils.datatypes import DataTypeOutput
 from utils.utils import print_debug
 from utils.utils import print_error
 from utils.utils import print_warning
