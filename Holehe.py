@@ -3,13 +3,14 @@
 import asyncio
 import httpx
 import os
+from holehe.core import import_submodules, get_functions, launch_module
+from holehe.modules import *
 
 from classes.account.Account import Account
 from classes.account.WebsiteAccount import WebsiteAccount
 from classes.Profile import Profile
 from classes.types.OpseStr import OpseStr
 from tools.Tool import Tool
-from .holehe.core import *
 
 from utils.datatypes import DataTypeInput
 from utils.datatypes import DataTypeOutput
@@ -27,9 +28,7 @@ class HoleheTool(Tool):
     deprecated = False
 
     # Import Modules
-    dynamic_dir = __name__.removesuffix('.' + os.path.basename(__file__).split('.')[0])
-
-    modules = import_submodules(dynamic_dir + ".holehe.modules")
+    modules = import_submodules("holehe.modules")
     websites = get_functions(modules)
 
     def __init__(self):
