@@ -1,8 +1,0 @@
-*.pyc
-test.py
-todolist
-__pycache__
-holehe.egg-info
-.idea
-venv
-test_module.py
