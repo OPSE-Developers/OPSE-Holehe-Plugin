@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import asyncio
+from typing import Any, Dict, List
 import httpx
 import os
 from holehe.core import import_submodules, get_functions, launch_module
@@ -36,14 +37,14 @@ class HoleheTool(Tool):
         super().__init__()
 
     @staticmethod
-    def get_config() -> dict[str]:
+    def get_config() -> Dict[str, Any]:
         """Function which return tool configuration as a dictionnary."""
         return {
             'active': True,
         }
 
     @staticmethod
-    def get_lst_input_data_types() -> dict[str, bool]:
+    def get_lst_input_data_types() -> Dict[str, bool]:
         """
         Function which return the list of data types which can be use to run this Tool.
         It's will help to make decision to run Tool depending on current data.
@@ -53,7 +54,7 @@ class HoleheTool(Tool):
         }
 
     @staticmethod
-    def get_lst_output_data_types() -> list[str]:
+    def get_lst_output_data_types() -> List[str]:
         """
         Function which return the list of data types which can be receive by using this Tool.
         It's will help to make decision to complete profile to get more information.
@@ -64,7 +65,7 @@ class HoleheTool(Tool):
 
     def execute(self):
 
-        emails: list[OpseStr] = self.get_default_profile().get_lst_emails()
+        emails: List[OpseStr] = self.get_default_profile().get_lst_emails()
         profile: Profile = self.get_default_profile().clone()
 
         for email in emails:
@@ -79,7 +80,7 @@ class HoleheTool(Tool):
         # Append completed profile
         self.append_profile(profile)
 
-    def list_website_accounts(self, email, profile: Profile = None) -> list[Account]:
+    def list_website_accounts(self, email, profile: Profile = None) -> List[Account]:
         """ """
         if profile == None:
             profile = Profile(lst_emails=[email], lst_accounts=[])
